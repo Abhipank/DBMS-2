@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}"/>
+        <link rel="icon" href="{% static 'maxresdefault.jpg' %}">
+    </head>
+    <body>
+        <img src="{%static 'maxresdefault.jpg'%}" width="700" height="300"/>
+       <div class="container">
+        <div class="login-box">
+            <form class="login" method='post' >
+                {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" placeholder="UserID" name="num1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="password" name="num2" class="form-control">
+                    </div>
+                    <button type="submit" formaction="http://localhost:8000/home" class="full btn">
+                        Login
+                    </button>
+                    <div class="form-group">
+                        <p> Don't have an account? <a href="register"> SignUp</a></p>
+                    </div>
+            </form>
+            <p>
+                {% if messages %}
+                 <!-- {% for message in messages %} -->
+                  {{ message }}
+                 <!-- {% endfor %} -->
+                {% endif %}
+              </p>
+        </div>
+      </div>
+      
+    </body>
+</html>
